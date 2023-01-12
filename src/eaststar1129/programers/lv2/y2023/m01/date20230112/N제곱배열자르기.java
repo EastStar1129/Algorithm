@@ -17,7 +17,7 @@ public class N제곱배열자르기 {
     public static void main(String[] args) {
         int a[] = new N제곱배열자르기().solution(0, 0, 0);
         for (int aa : a ){
-            System.out.print(aa + " " );
+            System.out.print(aa + "  " );
         }
     }
 }
