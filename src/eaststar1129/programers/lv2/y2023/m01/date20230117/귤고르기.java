@@ -4,8 +4,8 @@ import java.util.*;
 
 public class 귤고르기 {
 
-     int answer = 0;
      public int solution(int k, int[] tangerine) {
+          int answer = 0;
           Map<Integer, Integer> map = new HashMap<>();
 
           for (int number : tangerine) {
@@ -15,23 +15,24 @@ public class 귤고르기 {
                     map.put(number, map.get(number) + 1);
                }
           }
+          List<Integer> list = new ArrayList<>(map.values());
+          list.sort((n1, n2) -> n2 - n1);
+          int sum = 0;
+          for (int number : list) {
+               sum += number;
+               ++answer;
 
-          ArrayList<Integer> keyList = new ArrayList<>(map.keySet());
-          answer = keyList.size();
+               if (sum >= k) {
+                    break;
+               }
+          }
+
           return answer;
      }
 
-     public void dfs(ArrayList<Integer> keyList, int index, Map<Integer, Integer> map, int k, int sum, int count) {
-          if (sum == k) {
-               answer = answer > count ? count : answer;
-          }
-          if (sum > k || index == keyList.size()) {
-               return;
-          }
-          dfs(keyList, index + 1, map, k, sum + keyList.get(index), count + 1);
-          dfs(keyList, index + 1, map, k, sum, count);
-     }
-
      public static void main(String[] args) {
+          int k= 6;
+          int[] arr = {1, 3, 2, 5, 4, 5, 2, 3};
+          System.out.println(new 귤고르기().solution(k, arr));
      }
 }
