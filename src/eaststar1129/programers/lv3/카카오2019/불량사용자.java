@@ -1,14 +1,13 @@
 package eaststar1129.programers.lv3.카카오2019;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class 불량사용자 {
     int answer = 0;
+    Set<String> set;
     public int solution(String[] user_id, String[] banned_id) {
         answer = 0;
+        set = new HashSet<>();
 
         ArrayList<ArrayList<String>> arr = new ArrayList<>();
         for (String bannedId: banned_id) {
@@ -28,11 +27,18 @@ public class 불량사용자 {
 
     private void dfs(ArrayList<ArrayList<String>> arr, int index, String[] answerArr) {
         if (arr.size() == index) {
-            answer++;
-            for (String s: answerArr) {
-                System.out.print(s + " ");
+            String[] str = new String[answerArr.length];
+            for (int i=0;i<answerArr.length;i++) {
+                str[i] = answerArr[i];
             }
-            System.out.println("");
+            Arrays.sort(str);
+            String strr = Arrays.toString(str);
+            if (!set.contains(strr)) {
+                System.out.println(strr);
+                set.add(strr);
+                answer++;
+            }
+
             return ;
         }
         for (int i=0;i<arr.get(index).size();i++) {
@@ -51,6 +57,8 @@ public class 불량사용자 {
     }
 
     public static void main(String[] args) {
-
+        String [] user_id = {"frodo", "fradi", "crodo", "abc123", "frodoc"};
+        String [] ban_id = {"*rodo", "*rodo", "******" };
+        System.out.println(new 불량사용자().solution(user_id, ban_id));
     }
 }
