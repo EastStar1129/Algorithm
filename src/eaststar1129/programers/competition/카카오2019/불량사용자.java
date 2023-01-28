@@ -1,4 +1,4 @@
-package eaststar1129.programers.lv3.카카오2019;
+package eaststar1129.programers.competition.카카오2019;
 
 import java.util.*;
 
